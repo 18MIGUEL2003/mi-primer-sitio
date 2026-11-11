@@ -125,3 +125,40 @@ footer {
   font-size: 0.9rem;
   font-weight: 600;
 }
+
+/* Proyectos */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.project {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.project h3 {
+  color: #1f2933;
+  font-size: 1.2rem;
+}
+
+.project p {
+  color: #475569;
+  flex-grow: 1;
+}
+
+.project a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.project a:hover {
+  text-decoration: underline;
+}
