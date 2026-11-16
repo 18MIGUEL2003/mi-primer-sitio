@@ -74,6 +74,24 @@ function mostrarMensajes(mensajes) {
 
     elemento.textContent = `${mensaje.nombre} (${mensaje.email}): ${mensaje.mensaje}`;
 
+    const botonEliminar = document.createElement("button");
+    botonEliminar.textContent = "Eliminar";
+    botonEliminar.dataset.id = mensaje.id;
+
+    botonEliminar.addEventListener("click", (evento) => {
+      const id = Number(evento.target.dataset.id);
+
+      const indice = mensajesEnviados.findIndex((mensaje) => mensaje.id === id);
+
+      if (indice !== -1) {
+        mensajesEnviados.splice(indice, 1);
+      }
+
+      const mensajesFiltrados = filtrarMensajes();
+      mostrarMensajes(mensajesFiltrados);
+    });
+
+    elemento.appendChild(botonEliminar);
     listaMensajes.appendChild(elemento);
   });
 }
@@ -83,4 +101,12 @@ function buscarMensajePorCorreo(email) {
 }
 
 console.log(buscarMensajePorCorreo("tucorreo@ejemplo.com"));
+
+function filtrarMensajes() {
+  const textoBuscado = buscarMensaje.value.trim().toLowerCase();
+
+  return mensajesEnviados.filter((mensaje) => {
+    return mensaje.email.toLowerCase().includes(textoBuscado);
+  });
+}
 
