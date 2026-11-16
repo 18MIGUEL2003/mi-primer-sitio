@@ -162,3 +162,13 @@ footer {
 .project a:hover {
   text-decoration: underline;
 }
+
+#mensaje-confirmacion {
+  color: #15803d;
+  font-weight: 600;
+}
+
+#mensaje-error {
+  color: #dc2626;
+  font-weight: 600;
+}

@@ -30,6 +30,7 @@ if (estaEstudiando) {
 
 const formulario = document.querySelector("form");
 const mensajeConfirmacion = document.querySelector("#mensaje-confirmacion");
+const mensajeError = document.querySelector("#mensaje-error");
 
 formulario.addEventListener("submit", (evento) => {
   evento.preventDefault();
@@ -38,12 +39,16 @@ formulario.addEventListener("submit", (evento) => {
   const email = document.querySelector("#email").value;
   const mensaje = document.querySelector("#mensaje").value;
 
-  console.log("Nombre:", nombre);
-  console.log("Correo:", email);
-  console.log("Mensaje:", mensaje);
+  if (mensaje.trim().length < 10) {
+    mensajeError.textContent = "El mensaje debe tener al menos 10 caracteres.";
+    mensajeConfirmacion.textContent = "";
+    return;
+  }
 
+  mensajeError.textContent = "";
   mensajeConfirmacion.textContent = `Gracias, ${nombre}. Tu mensaje fue recibido.`;
 
   formulario.reset();
 });
+
 
