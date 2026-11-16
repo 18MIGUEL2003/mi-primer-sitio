@@ -31,6 +31,10 @@ if (estaEstudiando) {
 const formulario = document.querySelector("form");
 const mensajeConfirmacion = document.querySelector("#mensaje-confirmacion");
 const mensajeError = document.querySelector("#mensaje-error");
+const listaMensajes = document.querySelector("#lista-mensajes");
+const buscarMensaje = document.querySelector("#buscar-mensaje");
+
+const mensajesEnviados = [];
 
 formulario.addEventListener("submit", (evento) => {
   evento.preventDefault();
@@ -45,10 +49,38 @@ formulario.addEventListener("submit", (evento) => {
     return;
   }
 
+  const nuevoMensaje = {
+    id: Date.now(),
+    nombre,
+    email,
+    mensaje
+  };
+
+  mensajesEnviados.push(nuevoMensaje);
+
   mensajeError.textContent = "";
   mensajeConfirmacion.textContent = `Gracias, ${nombre}. Tu mensaje fue recibido.`;
+
+  mostrarMensajes(mensajesEnviados);
 
   formulario.reset();
 });
 
+function mostrarMensajes(mensajes) {
+  listaMensajes.innerHTML = "";
+
+  mensajes.map((mensaje) => {
+    const elemento = document.createElement("li");
+
+    elemento.textContent = `${mensaje.nombre} (${mensaje.email}): ${mensaje.mensaje}`;
+
+    listaMensajes.appendChild(elemento);
+  });
+}
+
+function buscarMensajePorCorreo(email) {
+  return mensajesEnviados.find((mensaje) => mensaje.email === email);
+}
+
+console.log(buscarMensajePorCorreo("tucorreo@ejemplo.com"));
 

@@ -172,3 +172,25 @@ footer {
   color: #dc2626;
   font-weight: 600;
 }
+
+.mensajes-enviados {
+  margin-top: 24px;
+}
+
+#buscar-mensaje {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+#lista-mensajes {
+  list-style: none;
+  padding-left: 0;
+}
+
+#lista-mensajes li {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 8px;
+}
