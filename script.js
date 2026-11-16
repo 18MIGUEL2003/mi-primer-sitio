@@ -29,6 +29,7 @@ if (estaEstudiando) {
 }
 
 const formulario = document.querySelector("form");
+const mensajeConfirmacion = document.querySelector("#mensaje-confirmacion");
 
 formulario.addEventListener("submit", (evento) => {
   evento.preventDefault();
@@ -40,5 +41,9 @@ formulario.addEventListener("submit", (evento) => {
   console.log("Nombre:", nombre);
   console.log("Correo:", email);
   console.log("Mensaje:", mensaje);
+
+  mensajeConfirmacion.textContent = `Gracias, ${nombre}. Tu mensaje fue recibido.`;
+
+  formulario.reset();
 });
 
